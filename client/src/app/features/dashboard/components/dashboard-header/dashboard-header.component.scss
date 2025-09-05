@@ -4,7 +4,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-  padding-bottom: 2rem;
+  padding-top: 5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #2a2a2a;
 
   .welcome-section {
@@ -19,6 +20,8 @@
       font-size: 1.125rem;
       color: #cccccc;
     }
+
+    align-items: center;
   }
 
   .user-actions {
