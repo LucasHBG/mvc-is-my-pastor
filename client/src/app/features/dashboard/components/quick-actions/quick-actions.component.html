@@ -1,0 +1,10 @@
+<!-- Quick Actions -->
+<div class="dashboard-card quick-actions">
+  <h3>Quick Actions</h3>
+  <div class="actions-grid">
+    <button class="action-item" *ngFor="let action of quickActions" [routerLink]="action.route">
+      <span class="action-icon">{{ action.icon }}</span>
+      <span class="action-title">{{ action.title }}</span>
+    </button>
+  </div>
+</div>

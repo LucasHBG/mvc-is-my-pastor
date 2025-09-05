@@ -2,8 +2,8 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { environment } from '../../environments/environment';
+import { AuthService } from '@/app/core/services/auth.service';
+import { environment } from '@/environments/environment';
 
 declare const google: any;
 
@@ -106,7 +106,7 @@ export class SignupComponent implements OnInit {
       next: (success) => {
         this.isLoading.set(false);
         if (success) {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/app/dashboard']);
         }
       },
       error: (error) => {
@@ -140,7 +140,7 @@ export class SignupComponent implements OnInit {
         next: (success) => {
           this.isLoading.set(false);
           if (success) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/app/dashboard']);
           }
         },
         error: (error) => {

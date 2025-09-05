@@ -1,0 +1,11 @@
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+  <div class="welcome-section">
+    <h1>Welcome back, {{ (currentUser$ | async)?.name || 'User' }}</h1>
+    <p class="company-info">{{ (currentUser$ | async)?.company || 'Your Company' }}</p>
+  </div>
+  <div class="user-actions">
+    <button class="btn btn-outline">Settings</button>
+    <button class="btn btn-primary">New Transaction</button>
+  </div>
+</div>

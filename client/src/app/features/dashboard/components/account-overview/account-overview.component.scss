@@ -1,0 +1,74 @@
+// Accounts Section
+.accounts-section {
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+
+  .accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .account-card {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .account-header {
+      margin-bottom: 1.5rem;
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+      }
+
+      .account-iban {
+        font-size: 0.875rem;
+        color: #666666;
+        font-family: 'Courier New', monospace;
+      }
+    }
+
+    .account-balance {
+      margin-bottom: 2rem;
+
+      .balance-amount {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+    }
+
+    .account-actions {
+      display: flex;
+      gap: 1rem;
+
+      .btn-small {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        flex: 1;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .accounts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

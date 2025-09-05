@@ -1,0 +1,19 @@
+<!-- Account Overview Section -->
+<div class="accounts-section">
+  <h2>Your Accounts</h2>
+  <div class="accounts-grid">
+    <div class="account-card" *ngFor="let account of accounts$ | async">
+      <div class="account-header">
+        <h3>{{ account.name }}</h3>
+        <span class="account-iban">{{ account.iban }}</span>
+      </div>
+      <div class="account-balance">
+        <span class="balance-amount">{{ formatCurrency(account.balance) }}</span>
+      </div>
+      <div class="account-actions">
+        <button class="btn btn-small btn-outline">View Details</button>
+        <button class="btn btn-small btn-primary">Transfer</button>
+      </div>
+    </div>
+  </div>
+</div>

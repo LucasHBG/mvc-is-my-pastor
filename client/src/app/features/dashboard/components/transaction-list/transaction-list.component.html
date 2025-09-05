@@ -1,0 +1,23 @@
+<!-- Recent Transactions -->
+<div class="dashboard-card transactions">
+  <div class="card-header">
+    <h3>Recent Transactions</h3>
+    <a href="#" class="view-all">View All</a>
+  </div>
+  <div class="transactions-list">
+    <div class="transaction-item" *ngFor="let transaction of recentTransactions$ | async">
+      <div class="transaction-info">
+        <div class="transaction-description">{{ transaction.description }}</div>
+        <div class="transaction-date">{{ transaction.date | date:'short' }}</div>
+      </div>
+      <div class="transaction-amount" [class.negative]="transaction.amount < 0">
+        {{ formatCurrency(transaction.amount) }}
+      </div>
+      <div class="transaction-status">
+        <span class="status-badge" [ngClass]="getStatusClass(transaction.status)">
+          {{ transaction.status }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

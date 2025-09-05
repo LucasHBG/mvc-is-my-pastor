@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { 
     path: '', 
-    loadComponent: () => import('./landing/landing.component').then(m => m.LandingComponent)
+    loadComponent: () => import('./features/public/landing/landing.component').then(m => m.LandingComponent)
   },
   { 
-    path: 'dashboard', 
-    loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
+    path: 'app/dashboard', 
+    loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [AuthGuard]
   },
   { 
     path: 'pricing', 
-    loadComponent: () => import('./pricing/pricing.component').then(m => m.PricingComponent)
+    loadComponent: () => import('./features/public/pricing/pricing.component').then(m => m.PricingComponent)
   },
   { 
     path: 'signup', 
-    loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent)
+    loadComponent: () => import('./features/public/signup/signup.component').then(m => m.SignupComponent)
   },
+  // Legacy routes for backward compatibility
+  { path: 'dashboard', redirectTo: '/app/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 ];
 
