@@ -31,6 +31,10 @@ const routes: Routes = [
     path: ROUTES.SIGNUP.substring(1), // Remove leading slash for route definition
     loadComponent: () => import('./features/public/signup/signup.component').then(m => m.SignupComponent)
   },
+  { 
+    path: ROUTES.SIGNIN.substring(1), // Remove leading slash for route definition
+    loadComponent: () => import('./features/public/signin/signin.component').then(m => m.SigninComponent)
+  },
   // Legacy routes for backward compatibility
   { path: 'dashboard', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '' }

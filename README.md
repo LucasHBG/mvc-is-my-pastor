@@ -38,22 +38,6 @@ make setup-env  # Set up environment files
 make dev        # Start development server
 ```
 
-### Frontend Only
-
-```bash
-cd client
-make install    # Install dependencies
-make setup-env  # Set up environment files
-make dev        # Start development server
-```
-
-### Database Only
-
-```bash
-./setup-database.sh
-# Access phpMyAdmin at http://localhost:8080
-```
-
 ### Development Workflow
 
 1. **Frontend development**: Work in the `client/` directory

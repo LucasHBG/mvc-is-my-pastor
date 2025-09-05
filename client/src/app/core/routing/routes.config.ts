@@ -9,6 +9,7 @@ export const ROUTES = {
   HOME: '/',
   PRICING: '/pricing',
   SIGNUP: '/signup',
+  SIGNIN: '/signin',
   
   // Protected routes
   DASHBOARD: '/dashboard',
@@ -51,6 +52,12 @@ export const ROUTE_CONFIG: Record<keyof typeof ROUTES, RouteConfig> = {
     title: 'Sign Up',
     requiresAuth: false,
     description: 'User registration'
+  },
+  SIGNIN: {
+    path: ROUTES.SIGNIN,
+    title: 'Sign In',
+    requiresAuth: false,
+    description: 'User authentication'
   },
   DASHBOARD: {
     path: ROUTES.DASHBOARD,
