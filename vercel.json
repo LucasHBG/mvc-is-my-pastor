@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "angular",
   "outputDirectory": "client/dist/angular-test",
-  "buildCommand": "cd client && npm run build",
+  "buildCommand": "cd client && make build",
   "installCommand": "cd client && npm install"
 }

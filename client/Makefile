@@ -75,7 +75,7 @@ dev: $(NODE_MODULES) $(ENV_FILE)
 	ng serve
 
 # Production build
-build: $(NODE_MODULES) $(PROD_ENV_FILE)
+build: $(NODE_MODULES) $(ENV_FILE) $(PROD_ENV_FILE)
 	ng build --configuration production
 
 # Development build
