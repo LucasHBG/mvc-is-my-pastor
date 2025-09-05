@@ -8,7 +8,7 @@ const routes: Routes = [
     loadComponent: () => import('./features/public/landing/landing.component').then(m => m.LandingComponent)
   },
   { 
-    path: 'app/dashboard', 
+    path: 'dashboard', 
     loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [AuthGuard]
   },
@@ -21,7 +21,7 @@ const routes: Routes = [
     loadComponent: () => import('./features/public/signup/signup.component').then(m => m.SignupComponent)
   },
   // Legacy routes for backward compatibility
-  { path: 'dashboard', redirectTo: '/app/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 ];
 

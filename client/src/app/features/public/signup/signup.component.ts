@@ -106,7 +106,7 @@ export class SignupComponent implements OnInit {
       next: (success) => {
         this.isLoading.set(false);
         if (success) {
-          this.router.navigate(['/app/dashboard']);
+          this.router.navigate(['/dashboard']);
         }
       },
       error: (error) => {
@@ -140,7 +140,7 @@ export class SignupComponent implements OnInit {
         next: (success) => {
           this.isLoading.set(false);
           if (success) {
-            this.router.navigate(['/app/dashboard']);
+            this.router.navigate(['/dashboard']);
           }
         },
         error: (error) => {
