@@ -1,53 +1,50 @@
-# Angular
+# MVC is My Pastor - Monorepo
 
-This directory is a brief example of an [Angular](https://angular.io/) app that can be deployed to Vercel with zero configuration.
+A full-stack financial management application inspired by Qonto's design and functionality.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+## Project Structure
 
-## Deploy Your Own
-
-Deploy your own Angular project with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/angular&template=angular)
-
-_Live Example: https://angular-template.vercel.app_
-
-## Development server
-
-### Using Makefile (Recommended)
-```bash
-make dev          # Start development server
-make build        # Build for production
-make test         # Run tests
-make help         # See all available commands
+```
+mvc-is-my-pastor/
+├── client/                 # Angular frontend application
+│   ├── src/               # Angular source code
+│   ├── package.json       # Frontend dependencies
+│   ├── angular.json       # Angular configuration
+│   └── README.md          # Frontend documentation
+├── server/                # Future: Backend server (Node.js/NestJS)
+├── .github/               # GitHub workflows and documentation
+├── .gitignore             # Git ignore rules
+└── README.md              # This file
 ```
 
-### Traditional Angular CLI
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Quick Start
 
-## Code scaffolding
+### Frontend (Angular)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-### Using Makefile (Recommended)
 ```bash
-make build        # Build for production
-make build-dev    # Build for development
+cd client
+make install    # Install dependencies
+make setup-env  # Set up environment files
+make dev        # Start development server
 ```
 
-### Traditional Angular CLI
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Development Workflow
 
-## Running unit tests
+1. **Frontend development**: Work in the `client/` directory
+2. **Backend development**: Future - will be in `server/` directory
+3. **Documentation**: Check individual README files in each directory
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies
 
-## Running end-to-end tests
+- **Frontend**: Angular 17, SCSS, TypeScript
+- **Backend**: Future - NestJS
+- **Authentication**: Google OAuth integration
+- **Design**: Qonto-inspired dark theme
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Getting Started
 
-## Further help
+1. Clone the repository
+2. Navigate to the `client/` directory for frontend development
+3. Follow the setup instructions in `client/README.md`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For detailed setup and development instructions, see the README in each respective directory.

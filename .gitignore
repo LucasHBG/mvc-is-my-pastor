@@ -1,13 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
+/client/dist
+/server/dist
 /tmp
 /out-tsc
 /bazel-out
 
 # Node
-/node_modules
+/client/node_modules
+/server/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -29,7 +31,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/client/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
@@ -41,26 +43,26 @@ testem.log
 .DS_Store
 Thumbs.db
 .vercel
-.angular
+/client/.angular
 
 # Environment files with sensitive data
 # Keep template files but ignore any with actual credentials
-src/environments/environment.local.ts
-src/environments/environment.staging.ts
-src/environments/environment.development.ts
-src/environments/environment.*.local.ts
+client/src/environments/environment.local.ts
+client/src/environments/environment.staging.ts
+client/src/environments/environment.development.ts
+client/src/environments/environment.*.local.ts
 
 # ALL environment files (more secure approach)
-src/environments/environment.ts
-src/environments/environment.prod.ts
+client/src/environments/environment.ts
+client/src/environments/environment.prod.ts
 
 # Backup environment files (in case someone creates backups)
-src/environments/*.backup.ts
-src/environments/*.bak.ts
+client/src/environments/*.backup.ts
+client/src/environments/*.bak.ts
 
 # Environment files with actual secrets (common naming patterns)
-src/environments/environment.secrets.ts
-src/environments/.env*
+client/src/environments/environment.secrets.ts
+client/src/environments/.env*
 .env
 .env.local
 .env.development
@@ -68,6 +70,13 @@ src/environments/.env*
 .env.production
 
 # Google Service Account files
-src/assets/google-service-account.json
-src/assets/firebase-adminsdk*.json
-src/assets/*-service-account-*.json
+client/src/assets/google-service-account.json
+client/src/assets/firebase-adminsdk*.json
+client/src/assets/*-service-account-*.json
+
+# Server environment files (when server is added)
+server/.env
+server/.env.local
+server/.env.development
+server/.env.staging
+server/.env.production
