@@ -24,8 +24,9 @@
                 <!-- Authenticated Navigation -->
                 <ng-container *ngIf="isAuthenticated$ | async">
                     <nav class="navbar-nav">
+                        <a [routerLink]="routes.DASHBOARD" class="nav-link" routerLinkActive="active">Dashboard</a>
                         <a [routerLink]="routes.TRANSACTIONS" class="nav-link" routerLinkActive="active">Transactions</a>
-                        <a href="#" class="nav-link">Accounts</a>
+                        <a [routerLink]="routes.CARDS" class="nav-link" routerLinkActive="active">Cards</a>
                     </nav>
 
                     <div class="navbar-actions">

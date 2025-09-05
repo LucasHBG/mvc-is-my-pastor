@@ -13,11 +13,11 @@ export const ROUTES = {
   // Protected routes
   DASHBOARD: '/dashboard',
   TRANSACTIONS: '/transactions',
+  CARDS: '/cards',
   
   // Dashboard sub-routes (for future use)
   TRANSFER: '/dashboard/transfer',
   REQUEST: '/dashboard/request',
-  CARDS: '/dashboard/cards',
   REPORTS: '/dashboard/reports',
 } as const;
 
@@ -64,6 +64,12 @@ export const ROUTE_CONFIG: Record<keyof typeof ROUTES, RouteConfig> = {
     requiresAuth: true,
     description: 'View and manage transactions'
   },
+  CARDS: {
+    path: ROUTES.CARDS,
+    title: 'Cards',
+    requiresAuth: true,
+    description: 'Manage personal and company cards'
+  },
   TRANSFER: {
     path: ROUTES.TRANSFER,
     title: 'Transfer Money',
@@ -75,12 +81,6 @@ export const ROUTE_CONFIG: Record<keyof typeof ROUTES, RouteConfig> = {
     title: 'Request Payment',
     requiresAuth: true,
     description: 'Request payment from someone'
-  },
-  CARDS: {
-    path: ROUTES.CARDS,
-    title: 'Cards',
-    requiresAuth: true,
-    description: 'Manage payment cards'
   },
   REPORTS: {
     path: ROUTES.REPORTS,

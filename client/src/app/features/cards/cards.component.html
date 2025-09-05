@@ -1,0 +1,156 @@
+<!-- Cards Page -->
+<section class="cards-page">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Cards</h1>
+      <p class="page-subtitle">Manage your personal and company cards</p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-icon">👤</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ (personalCards$ | async)?.length || 0 }}</div>
+          <div class="stat-label">Personal Cards</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏢</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ (companyCards$ | async)?.length || 0 }}</div>
+          <div class="stat-label">Company Cards</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <div class="filter-group">
+        <h3 class="filter-title">Filter Cards</h3>
+        <div class="filter-buttons">
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'all'"
+            (click)="filterCards('all')">
+            All Cards
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'personal'"
+            (click)="filterCards('personal')">
+            Personal
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'company'"
+            (click)="filterCards('company')">
+            Company
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'active'"
+            (click)="filterCards('active')">
+            Active
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'blocked'"
+            (click)="filterCards('blocked')">
+            Blocked
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+      <div *ngIf="cards$ | async as cards">
+        <div *ngIf="cards.length === 0" class="no-cards">
+          <p>No cards found matching your criteria.</p>
+        </div>
+        
+        <div *ngFor="let card of cards" class="card-item" [style.border-left-color]="card.color">
+          <!-- Card Header -->
+          <div class="card-header">
+            <div class="card-info">
+              <div class="card-type">
+                <span class="card-type-icon">{{ getCardTypeIcon(card.cardType) }}</span>
+                <span class="card-type-text">{{ card.cardType | titlecase }}</span>
+              </div>
+              <div class="card-brand" [class]="getBrandClass(card.brand)">
+                {{ getCardBrandIcon(card.brand) }}
+              </div>
+            </div>
+            <div class="card-status">
+              <span class="status-badge" [class]="getStatusClass(card.status)">
+                {{ card.status | titlecase }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Details -->
+          <div class="card-body">
+            <div class="card-number">{{ formatCardNumber(card.cardNumber) }}</div>
+            <div class="card-holder">{{ card.cardHolder }}</div>
+            <div class="card-expiry">Expires {{ formatExpiryDate(card.expiryDate) }}</div>
+            <div class="card-description" *ngIf="card.description">{{ card.description }}</div>
+          </div>
+
+          <!-- Card Metrics -->
+          <div class="card-metrics">
+            <div class="metric">
+              <div class="metric-label">Balance</div>
+              <div class="metric-value" [class.zero]="card.balance === 0">
+                {{ formatCurrency(card.balance || 0) }}
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Limit</div>
+              <div class="metric-value">{{ formatCurrency(card.limit) }}</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Last Used</div>
+              <div class="metric-value">{{ getLastUsedText(card.lastUsed) }}</div>
+            </div>
+          </div>
+
+          <!-- Card Actions -->
+          <div class="card-actions">
+            <div class="card-features">
+              <span class="feature-badge" *ngIf="card.isVirtual">Virtual</span>
+            </div>
+            <div class="action-buttons">
+              <button 
+                class="btn btn-sm btn-outline"
+                *ngIf="card.status === 'active'"
+                (click)="blockCard(card.id)">
+                Block Card
+              </button>
+              <button 
+                class="btn btn-sm btn-primary"
+                *ngIf="card.status === 'blocked'"
+                (click)="unblockCard(card.id)">
+                Unblock Card
+              </button>
+              <button class="btn btn-sm btn-outline">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add New Card Section -->
+    <div class="add-card-section">
+      <div class="add-card-prompt">
+        <h3>Need a new card?</h3>
+        <p>Request a new personal or company card in just a few clicks.</p>
+        <div class="add-card-buttons">
+          <button class="btn btn-primary">Request Personal Card</button>
+          <button class="btn btn-outline">Request Company Card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
