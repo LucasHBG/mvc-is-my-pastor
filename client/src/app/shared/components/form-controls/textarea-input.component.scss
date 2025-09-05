@@ -1,0 +1,185 @@
+// Textarea Input Specific Styles
+
+.textarea-wrapper {
+  .textarea-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textarea-input {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color, #2a2a2a);
+    border-radius: 6px;
+    background-color: var(--input-background, #1a1a1a);
+    color: var(--text-primary, #ffffff);
+    font-size: 0.875rem;
+    font-family: inherit;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.2s ease;
+    outline: none;
+
+    &::placeholder {
+      color: var(--text-secondary, #666666);
+    }
+
+    &:focus {
+      border-color: var(--primary-color, #ffffff);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    &:disabled {
+      background-color: var(--surface-color, #2a2a2a);
+      color: var(--text-secondary, #666666);
+      cursor: not-allowed;
+      resize: none;
+    }
+
+    &:readonly {
+      background-color: var(--surface-color, #2a2a2a);
+      resize: none;
+    }
+
+    // Scrollbar styling for webkit browsers
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--surface-color, #2a2a2a);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--border-color, #2a2a2a);
+      border-radius: 4px;
+
+      &:hover {
+        background: var(--text-secondary, #666666);
+      }
+    }
+  }
+
+  // Error state
+  .textarea-container.has-error .textarea-input {
+    border-color: var(--error-color, #ef4444);
+    
+    &:focus {
+      border-color: var(--error-color, #ef4444);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Character count
+  .char-count {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #666666);
+    margin-top: 0.25rem;
+    
+    &.near-limit {
+      color: var(--warning-color, #f59e0b);
+    }
+    
+    &.at-limit {
+      color: var(--error-color, #ef4444);
+    }
+  }
+
+  // Auto-resize functionality
+  &.auto-resize {
+    .textarea-input {
+      resize: none;
+      overflow: hidden;
+      min-height: auto;
+    }
+
+    .resize-helper {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid transparent;
+      font-size: 0.875rem;
+      font-family: inherit;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  // Resize handle styling
+  .textarea-input:not([disabled]):not([readonly]) {
+    &::-webkit-resizer {
+      background: linear-gradient(
+        -45deg,
+        transparent 0,
+        transparent 2px,
+        var(--border-color, #2a2a2a) 2px,
+        var(--border-color, #2a2a2a) 4px,
+        transparent 4px,
+        transparent 6px,
+        var(--border-color, #2a2a2a) 6px,
+        var(--border-color, #2a2a2a) 8px,
+        transparent 8px
+      );
+    }
+  }
+
+  // Focus state
+  .textarea-container.focused .textarea-input {
+    border-color: var(--primary-color, #ffffff);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  // Size variants
+  &.size-small {
+    .textarea-input {
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      min-height: 60px;
+    }
+
+    .char-count {
+      font-size: 0.6875rem;
+    }
+  }
+
+  &.size-large {
+    .textarea-input {
+      padding: 1rem;
+      font-size: 1rem;
+      min-height: 120px;
+    }
+
+    .char-count {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Animation for auto-resize
+@keyframes textareaGrow {
+  from {
+    height: auto;
+  }
+  to {
+    height: var(--target-height);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .textarea-wrapper {
+    .textarea-input {
+      font-size: 16px; // Prevent zoom on iOS
+    }
+  }
+}

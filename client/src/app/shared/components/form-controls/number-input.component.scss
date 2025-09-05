@@ -1,0 +1,83 @@
+// Number Input Specific Styles
+
+.number-input {
+  .number-field {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .input-prefix,
+  .input-suffix {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #666666);
+    font-weight: 500;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .input-prefix {
+    margin-right: 0.5rem;
+  }
+
+  .input-suffix {
+    margin-left: 0.5rem;
+  }
+
+  .spin-button {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--surface-color, rgba(255, 255, 255, 0.1));
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.95);
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.decrease {
+      margin-right: 0.5rem;
+    }
+
+    &.increase {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+// Currency and prefix/suffix styling
+.input-wrapper.number-input {
+  .form-input {
+    flex: 1;
+    
+    &.number-field {
+      min-width: 0; // Allow flex shrinking
+    }
+  }
+}
+
+// Spin button animations
+@keyframes buttonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.spin-button:active {
+  animation: buttonPress 0.1s ease;
+}

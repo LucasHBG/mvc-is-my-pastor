@@ -1,0 +1,274 @@
+// Text Input Specific Styles
+
+.text-wrapper {
+  .text-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .text-input {
+    flex: 1;
+    height: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--border-color, #2a2a2a);
+    border-radius: 6px;
+    background-color: var(--input-background, #1a1a1a);
+    color: var(--text-primary, #ffffff);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    outline: none;
+
+    &::placeholder {
+      color: var(--text-secondary, #666666);
+    }
+
+    &:focus {
+      border-color: var(--primary-color, #ffffff);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    &:disabled {
+      background-color: var(--surface-color, #2a2a2a);
+      color: var(--text-secondary, #666666);
+      cursor: not-allowed;
+    }
+
+    &:readonly {
+      background-color: var(--surface-color, #2a2a2a);
+    }
+  }
+
+  // Input with left icon
+  &.has-left-icon .text-input {
+    padding-left: 2.5rem;
+  }
+
+  // Input with right icon or clear button
+  &.has-right-icon .text-input,
+  &.has-clear-button .text-input {
+    padding-right: 2.5rem;
+  }
+
+  // Input with both left and right elements
+  &.has-left-icon.has-right-icon .text-input,
+  &.has-left-icon.has-clear-button .text-input {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary, #666666);
+    pointer-events: none;
+    z-index: 1;
+
+    &.left-icon {
+      left: 0.75rem;
+    }
+
+    &.right-icon {
+      right: 0.75rem;
+    }
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    color: var(--text-secondary, #666666);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary, #ffffff);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  // Prefix and suffix
+  .input-prefix,
+  .input-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    color: var(--text-secondary, #666666);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .input-prefix {
+    left: 0.75rem;
+  }
+
+  .input-suffix {
+    right: 0.75rem;
+  }
+
+  &.has-prefix .text-input {
+    padding-left: calc(0.75rem + var(--prefix-width, 2rem));
+  }
+
+  &.has-suffix .text-input {
+    padding-right: calc(0.75rem + var(--suffix-width, 2rem));
+  }
+
+  // Character count
+  .char-count {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #666666);
+    margin-top: 0.25rem;
+    
+    &.near-limit {
+      color: var(--warning-color, #f59e0b);
+    }
+    
+    &.at-limit {
+      color: var(--error-color, #ef4444);
+    }
+  }
+
+  // Error state
+  &.error .text-input {
+    border-color: var(--error-color, #ef4444);
+    
+    &:focus {
+      border-color: var(--error-color, #ef4444);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Focus state
+  &.focused .text-input {
+    border-color: var(--primary-color, #ffffff);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  // Size variants
+  &.size-small {
+    .text-input {
+      height: 36px;
+      font-size: 0.75rem;
+      padding: 0 0.5rem;
+    }
+
+    &.has-left-icon .text-input {
+      padding-left: 2rem;
+    }
+
+    &.has-right-icon .text-input,
+    &.has-clear-button .text-input {
+      padding-right: 2rem;
+    }
+
+    .input-icon {
+      &.left-icon {
+        left: 0.5rem;
+      }
+
+      &.right-icon {
+        right: 0.5rem;
+      }
+    }
+
+    .clear-button {
+      right: 0.25rem;
+      width: 20px;
+      height: 20px;
+
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &.size-large {
+    .text-input {
+      height: 52px;
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    &.has-left-icon .text-input {
+      padding-left: 3rem;
+    }
+
+    &.has-right-icon .text-input,
+    &.has-clear-button .text-input {
+      padding-right: 3rem;
+    }
+
+    .input-icon {
+      &.left-icon {
+        left: 1rem;
+      }
+
+      &.right-icon {
+        right: 1rem;
+      }
+    }
+
+    .clear-button {
+      right: 0.75rem;
+      width: 28px;
+      height: 28px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+// Animation for clear button
+@keyframes clearButtonScale {
+  0% {
+    transform: translateY(-50%) scale(0.8);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.clear-button {
+  animation: clearButtonScale 0.2s ease;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .text-wrapper {
+    .text-input {
+      font-size: 16px; // Prevent zoom on iOS
+    }
+
+    &.size-small .text-input {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,242 @@
+// Base Input Styles
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+
+  &.size-small { margin-bottom: 1rem; }
+  &.size-large { margin-bottom: 2rem; }
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+
+  .required-indicator {
+    color: var(--error-color, #ff4444);
+    margin-left: 0.25rem;
+  }
+
+  .form-group.has-error & {
+    color: var(--error-color, #ff4444);
+  }
+}
+
+.input-container {
+  position: relative;
+  
+  &.error {
+    .form-input, .input-wrapper {
+      border-color: var(--error-color, #ff4444);
+      
+      &:focus-within {
+        border-color: var(--error-color, #ff4444);
+        box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+// Input wrapper for complex inputs (with icons, buttons, etc.)
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--border-color, #2a2a2a);
+  border-radius: 8px;
+  background-color: var(--input-background, #1a1a1a);
+  transition: all 0.2s ease;
+  
+  &:focus-within {
+    border-color: var(--primary-color, #ffffff);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  // Size variants
+  .size-small & {
+    min-height: 36px;
+    padding: 0 0.75rem;
+  }
+
+  .size-medium & {
+    min-height: 44px;
+    padding: 0 1rem;
+  }
+
+  .size-large & {
+    min-height: 52px;
+    padding: 0 1.25rem;
+  }
+
+  // Variant styles
+  .variant-filled & {
+    background-color: var(--surface-color, #2a2a2a);
+    border: 1px solid transparent;
+  }
+}
+
+// Base input styles
+.form-input {
+  width: 100%;
+  border: 1px solid var(--border-color, #2a2a2a);
+  border-radius: 8px;
+  background-color: var(--input-background, #1a1a1a);
+  color: var(--text-primary, #ffffff);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+
+  &::placeholder {
+    color: var(--text-secondary, #666666);
+  }
+
+  &:focus {
+    border-color: var(--primary-color, #ffffff);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:read-only {
+    background-color: var(--surface-color, #2a2a2a);
+    cursor: default;
+  }
+
+  // Size variants
+  .size-small & {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .size-medium & {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .size-large & {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  // Variant styles
+  .variant-filled & {
+    background-color: var(--surface-color, #2a2a2a);
+    border: 1px solid transparent;
+    
+    &:focus {
+      background-color: var(--input-background, #1a1a1a);
+      border-color: var(--primary-color, #ffffff);
+    }
+  }
+
+  // When inside input-wrapper, remove individual styling
+  .input-wrapper & {
+    border: none;
+    background: transparent;
+    padding: 0.75rem 0;
+    box-shadow: none;
+    
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+// Helper text
+.helper-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #666666);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+// Error message
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--error-color, #ff4444);
+  line-height: 1.4;
+
+  .error-icon {
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  .error-text {
+    flex: 1;
+  }
+}
+
+// Icon styles (for inputs with icons)
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-secondary, #666666);
+  flex-shrink: 0;
+
+  &.left {
+    margin-right: 0.75rem;
+  }
+
+  &.right {
+    margin-left: 0.75rem;
+  }
+}
+
+// Input button (for password toggle, clear button, etc.)
+.input-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #666666);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    color: var(--text-primary, #ffffff);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary-color, #ffffff);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+// Animation for error states
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.form-group.has-error .input-container {
+  animation: shake 0.4s ease-in-out;
+}

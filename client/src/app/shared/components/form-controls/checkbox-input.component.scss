@@ -1,0 +1,205 @@
+// Checkbox Input Specific Styles
+
+.checkbox-wrapper {
+  .checkbox-input-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0;
+
+    &.label-right {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .checkbox-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .checkbox-visual {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color, #2a2a2a);
+    border-radius: 4px;
+    background-color: var(--input-background, #1a1a1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    position: relative;
+
+    .checkmark {
+      color: #ffffff;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.2s ease;
+    }
+
+    .indeterminate-mark {
+      width: 10px;
+      height: 2px;
+      background-color: #ffffff;
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+  }
+
+  .checkbox-label {
+    font-size: 0.875rem;
+    color: var(--text-primary, #ffffff);
+    line-height: 1.5;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+    
+    // Allow for links and other interactive elements
+    a {
+      color: var(--primary-color, #ffffff);
+      text-decoration: underline;
+      
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  // Checked state
+  .checkbox-input:checked + .checkbox-visual {
+    background-color: var(--primary-color, #ffffff);
+    border-color: var(--primary-color, #ffffff);
+
+    .checkmark {
+      opacity: 1;
+      transform: scale(1);
+      color: #000000;
+    }
+  }
+
+  // Indeterminate state
+  .checkbox-input-wrapper.indeterminate .checkbox-visual {
+    background-color: var(--primary-color, #ffffff);
+    border-color: var(--primary-color, #ffffff);
+
+    .indeterminate-mark {
+      opacity: 1;
+      background-color: #000000;
+    }
+  }
+
+  // Focus state
+  .checkbox-input:focus + .checkbox-visual {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  // Hover state
+  .checkbox-container:hover .checkbox-visual {
+    border-color: var(--text-secondary, #666666);
+  }
+
+  .checkbox-input:checked + .checkbox-visual:hover,
+  .checkbox-input-wrapper.indeterminate .checkbox-visual:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  // Disabled state
+  .checkbox-input-wrapper.disabled {
+    .checkbox-visual {
+      background-color: var(--surface-color, #2a2a2a);
+      border-color: var(--border-color, #2a2a2a);
+    }
+
+    .checkbox-label {
+      color: var(--text-secondary, #666666);
+    }
+
+    .checkbox-input:checked + .checkbox-visual {
+      background-color: var(--text-secondary, #666666);
+      border-color: var(--text-secondary, #666666);
+
+      .checkmark {
+        color: #ffffff;
+      }
+    }
+  }
+
+  // Size variants
+  &.size-small {
+    .checkbox-visual {
+      width: 14px;
+      height: 14px;
+
+      .checkmark {
+        width: 8px;
+        height: 8px;
+      }
+
+      .indeterminate-mark {
+        width: 8px;
+        height: 1.5px;
+      }
+    }
+
+    .checkbox-label {
+      font-size: 0.75rem;
+    }
+  }
+
+  &.size-large {
+    .checkbox-visual {
+      width: 22px;
+      height: 22px;
+
+      .checkmark {
+        width: 16px;
+        height: 16px;
+      }
+
+      .indeterminate-mark {
+        width: 14px;
+        height: 3px;
+      }
+    }
+
+    .checkbox-label {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Animation for check/uncheck
+@keyframes checkboxCheck {
+  0% {
+    transform: scale(0.6) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.checkbox-input:checked + .checkbox-visual .checkmark {
+  animation: checkboxCheck 0.3s ease;
+}
