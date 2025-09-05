@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Card, CardService } from '../../core/services/card.service';
+import { CardComponent } from '../../shared/components/cards/card.component';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss'
 })
@@ -16,6 +17,19 @@ export class CardsComponent implements OnInit {
   companyCards$: Observable<Card[]>;
   selectedFilter: 'all' | 'personal' | 'company' | 'active' | 'blocked' = 'all';
   selectedCardType: 'all' | 'personal' | 'company' = 'all';
+
+  statCards = [
+    {
+      icon: '👤',
+      title: 'Personal Cards',
+      getValue: () => this.personalCards$
+    },
+    {
+      icon: '🏢', 
+      title: 'Company Cards',
+      getValue: () => this.companyCards$
+    }
+  ];
 
   constructor(private cardService: CardService) {
     this.cards$ = this.cardService.cards$;

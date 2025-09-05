@@ -35,42 +35,6 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
-
-  .stat-card {
-    background-color: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    .stat-icon {
-      font-size: 2rem;
-      background-color: #2a2a2a;
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stat-content {
-      .stat-number {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #ffffff;
-        line-height: 1;
-      }
-
-      .stat-label {
-        font-size: 0.875rem;
-        color: #a8a8a8;
-        margin-top: 0.25rem;
-      }
-    }
-  }
 }
 
 // Filters Section

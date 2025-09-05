@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '@/app/core/services/auth.service';
 import { NavigationService } from '@/app/core/routing/navigation.service';
 import { ROUTES } from '@/app/core/routing/routes.config';
+import { CardComponent, CardContent } from '@/app/shared/components/cards/card.component';
 import { environment } from '@/environments/environment';
 
 declare const google: any;
@@ -12,7 +13,7 @@ declare const google: any;
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, CardComponent],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })
@@ -28,6 +29,28 @@ export class SigninComponent implements OnInit {
   
   // Expose routes to template for type safety
   readonly routes = ROUTES;
+
+  // Feature cards data
+  readonly featureCards: CardContent[] = [
+    {
+      icon: '💳',
+      description: 'Manage your cards and payments',
+      variant: 'feature',
+      size: 'medium'
+    },
+    {
+      icon: '📊',
+      description: 'Track expenses and analytics',
+      variant: 'feature',
+      size: 'medium'
+    },
+    {
+      icon: '🏦',
+      description: 'Access business banking tools',
+      variant: 'feature',
+      size: 'medium'
+    }
+  ];
 
   constructor() {
     this.signinForm = this.fb.group({

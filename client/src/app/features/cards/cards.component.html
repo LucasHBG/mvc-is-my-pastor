@@ -9,20 +9,16 @@
 
     <!-- Quick Stats -->
     <div class="stats-section">
-      <div class="stat-card">
-        <div class="stat-icon">👤</div>
-        <div class="stat-content">
-          <div class="stat-number">{{ (personalCards$ | async)?.length || 0 }}</div>
-          <div class="stat-label">Personal Cards</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🏢</div>
-        <div class="stat-content">
-          <div class="stat-number">{{ (companyCards$ | async)?.length || 0 }}</div>
-          <div class="stat-label">Company Cards</div>
-        </div>
-      </div>
+      <app-card 
+        *ngFor="let stat of statCards"
+        [content]="{
+          title: ((stat.getValue() | async)?.length || 0).toString(),
+          subtitle: stat.title,
+          icon: stat.icon
+        }"
+        variant="info"
+        size="medium">
+      </app-card>
     </div>
 
     <!-- Filters Section -->

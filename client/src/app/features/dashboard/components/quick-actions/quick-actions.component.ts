@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { QuickAction, DashboardService } from '../../../../core/services/dashboard.service';
+import { CardComponent } from '../../../../shared/components/cards/card.component';
 
 @Component({
   selector: 'app-quick-actions',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CardComponent],
   templateUrl: './quick-actions.component.html',
   styleUrl: './quick-actions.component.scss'
 })

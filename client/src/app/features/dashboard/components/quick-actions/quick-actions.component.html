@@ -2,9 +2,16 @@
 <div class="dashboard-card quick-actions">
   <h3>Quick Actions</h3>
   <div class="actions-grid">
-    <button class="action-item" *ngFor="let action of quickActions" [routerLink]="action.route">
-      <span class="action-icon">{{ action.icon }}</span>
-      <span class="action-title">{{ action.title }}</span>
-    </button>
+    <app-card
+      *ngFor="let action of quickActions"
+      [content]="{
+        title: action.title,
+        icon: action.icon
+      }"
+      variant="feature"
+      size="small"
+      [routerLink]="action.route"
+      class="action-card">
+    </app-card>
   </div>
 </div>

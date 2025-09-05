@@ -1,0 +1,28 @@
+<div [class]="cardClasses">
+  <!-- Card Icon (if provided) -->
+  <div class="card-icon" *ngIf="displayIcon">
+    <span class="icon">{{ displayIcon }}</span>
+  </div>
+
+  <!-- Card Content -->
+  <div class="card-content">
+    <!-- Title -->
+    <h3 class="card-title" *ngIf="displayTitle">{{ displayTitle }}</h3>
+    
+    <!-- Subtitle -->
+    <h4 class="card-subtitle" *ngIf="displaySubtitle">{{ displaySubtitle }}</h4>
+    
+    <!-- Description -->
+    <p class="card-description" *ngIf="displayDescription">{{ displayDescription }}</p>
+    
+    <!-- Projected Content -->
+    <div class="card-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Card Actions Slot -->
+  <div class="card-actions" *ngIf="false">
+    <ng-content select="[slot=actions]"></ng-content>
+  </div>
+</div>
