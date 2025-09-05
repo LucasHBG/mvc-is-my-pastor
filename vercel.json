@@ -1,8 +1,7 @@
 {
-  "projects": {
-    "client": {
-      "rootDirectory": "client",
-      "framework": "angular"
-    }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "angular",
+  "outputDirectory": "client/dist/angular-test",
+  "buildCommand": "cd client && npm run build",
+  "installCommand": "cd client && npm install"
 }
