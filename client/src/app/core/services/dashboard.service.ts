@@ -3,6 +3,7 @@ import { Observable, combineLatest, map } from 'rxjs';
 import { AccountService } from './account.service';
 import { TransactionService } from './transaction.service';
 import { AuthService } from './auth.service';
+import { ROUTES, getRouteConfig } from '../routing/routes.config';
 
 export interface QuickAction {
   title: string;
@@ -24,28 +25,28 @@ export interface DashboardData {
 export class DashboardService {
   private quickActions: QuickAction[] = [
     { 
-      title: 'Send Money', 
+      title: getRouteConfig('TRANSFER').title || 'Send Money',
       icon: '💸', 
-      route: '/app/transfer',
-      description: 'Transfer money to another account'
+      route: ROUTES.TRANSFER,
+      description: getRouteConfig('TRANSFER').description
     },
     { 
-      title: 'Request Payment', 
+      title: getRouteConfig('REQUEST').title || 'Request Payment',
       icon: '📨', 
-      route: '/app/request',
-      description: 'Send a payment request'
+      route: ROUTES.REQUEST,
+      description: getRouteConfig('REQUEST').description
     },
     { 
-      title: 'Add Card', 
+      title: getRouteConfig('CARDS').title || 'Add Card',
       icon: '💳', 
-      route: '/app/cards',
-      description: 'Order a new payment card'
+      route: ROUTES.CARDS,
+      description: getRouteConfig('CARDS').description
     },
     { 
-      title: 'View Reports', 
+      title: getRouteConfig('REPORTS').title || 'View Reports',
       icon: '📊', 
-      route: '/app/reports',
-      description: 'Access financial reports'
+      route: ROUTES.REPORTS,
+      description: getRouteConfig('REPORTS').description
     }
   ];
 

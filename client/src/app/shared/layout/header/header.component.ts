@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService, User } from '@/app/core/services/auth.service';
-import { Router } from '@angular/router';
+import { NavigationService } from '@/app/core/routing/navigation.service';
+import { ROUTES } from '@/app/core/routing/routes.config';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,10 +17,13 @@ export class HeaderComponent implements OnInit {
   isMenuOpen = false;
   isAuthenticated$: Observable<boolean>;
   currentUser$: Observable<User | null>;
+  
+  // Expose routes to template for type safety
+  readonly routes = ROUTES;
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private navigationService: NavigationService
   ) {
     this.isAuthenticated$ = this.authService.isAuthenticated$;
     this.currentUser$ = this.authService.currentUser$;
@@ -33,6 +37,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.navigationService.navigateToHome();
   }
 }
