@@ -106,6 +106,24 @@ export class TransactionService {
     });
   }
 
+  getTransactionsByStatus(status: Transaction['status']): Observable<Transaction[]> {
+    return new Observable(observer => {
+      const allTransactions = this.transactionsSubject.value;
+      const filteredTransactions = allTransactions.filter(t => t.status === status);
+      observer.next(filteredTransactions);
+      observer.complete();
+    });
+  }
+
+  getTransactionsByCategory(category: string): Observable<Transaction[]> {
+    return new Observable(observer => {
+      const allTransactions = this.transactionsSubject.value;
+      const filteredTransactions = allTransactions.filter(t => t.category === category);
+      observer.next(filteredTransactions);
+      observer.complete();
+    });
+  }
+
   addTransaction(transaction: Omit<Transaction, 'id'>): Observable<Transaction> {
     return new Observable(observer => {
       const newTransaction: Transaction = {

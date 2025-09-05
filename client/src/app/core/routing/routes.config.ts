@@ -12,6 +12,7 @@ export const ROUTES = {
   
   // Protected routes
   DASHBOARD: '/dashboard',
+  TRANSACTIONS: '/transactions',
   
   // Dashboard sub-routes (for future use)
   TRANSFER: '/dashboard/transfer',
@@ -56,6 +57,12 @@ export const ROUTE_CONFIG: Record<keyof typeof ROUTES, RouteConfig> = {
     title: 'Dashboard',
     requiresAuth: true,
     description: 'User dashboard'
+  },
+  TRANSACTIONS: {
+    path: ROUTES.TRANSACTIONS,
+    title: 'Transactions',
+    requiresAuth: true,
+    description: 'View and manage transactions'
   },
   TRANSFER: {
     path: ROUTES.TRANSFER,

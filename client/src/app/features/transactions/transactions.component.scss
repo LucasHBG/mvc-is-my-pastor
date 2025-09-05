@@ -1,0 +1,293 @@
+// Transactions Page Styles
+.transactions-page {
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 2rem 0;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+// Page Header
+.page-header {
+  margin-bottom: 2rem;
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: #a8a8a8;
+    margin: 0;
+  }
+}
+
+// Filters Section
+.filters-section {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+
+  .filter-group {
+    .filter-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid #2a2a2a;
+        border-radius: 8px;
+        background-color: transparent;
+        color: #a8a8a8;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          border-color: #ffffff;
+          color: #ffffff;
+        }
+
+        &.active {
+          background-color: #ffffff;
+          color: #000000;
+          border-color: #ffffff;
+        }
+      }
+    }
+
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      background-color: #000000;
+      color: #ffffff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover,
+      &:focus {
+        border-color: #ffffff;
+        outline: none;
+      }
+
+      option {
+        background-color: #000000;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// Transactions List
+.transactions-list {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  overflow: hidden;
+
+  .transactions-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background-color: #000000;
+    border-bottom: 1px solid #2a2a2a;
+
+    .header-col {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #a8a8a8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .transactions-content {
+    .no-transactions {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #a8a8a8;
+      font-size: 1.125rem;
+    }
+
+    .transaction-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #2a2a2a;
+      transition: all 0.2s ease;
+      align-items: center;
+
+      &:hover {
+        background-color: #0f0f0f;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .transaction-col {
+        &.description {
+          .transaction-description {
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+          }
+
+          .transaction-counterparty {
+            font-size: 0.875rem;
+            color: #a8a8a8;
+          }
+        }
+
+        &.category {
+          .category-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #2a2a2a;
+            color: #ffffff;
+          }
+        }
+
+        &.date {
+          font-size: 0.875rem;
+          color: #a8a8a8;
+        }
+
+        &.amount {
+          .amount {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #00ff88;
+
+            &.negative {
+              color: #ff4444;
+            }
+          }
+        }
+
+        &.status {
+          .status-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            &.status-completed {
+              background-color: #00ff8820;
+              color: #00ff88;
+            }
+
+            &.status-pending {
+              background-color: #ffa50020;
+              color: #ffa500;
+            }
+
+            &.status-failed {
+              background-color: #ff444420;
+              color: #ff4444;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .transactions-list {
+    .transactions-header,
+    .transaction-row {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      
+      .transaction-col.category {
+        display: none;
+      }
+      
+      .header-col:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .transactions-page {
+    padding: 1rem 0;
+  }
+
+  .page-header {
+    .page-title {
+      font-size: 2rem;
+    }
+  }
+
+  .filters-section {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .transactions-list {
+    .transactions-header {
+      display: none;
+    }
+
+    .transactions-content {
+      .transaction-row {
+        display: block;
+        padding: 1.5rem;
+
+        .transaction-col {
+          margin-bottom: 0.75rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &.description {
+            .transaction-description {
+              font-size: 1.125rem;
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          &.amount {
+            .amount {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

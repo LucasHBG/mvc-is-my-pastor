@@ -1,0 +1,106 @@
+<!-- Transactions Page -->
+<section class="transactions-page">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Transactions</h1>
+      <p class="page-subtitle">View and manage all your transactions</p>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <div class="filter-group">
+        <h3 class="filter-title">Filter by Status</h3>
+        <div class="filter-buttons">
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'all'"
+            (click)="filterTransactions('all')">
+            All
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'completed'"
+            (click)="filterTransactions('completed')">
+            Completed
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'pending'"
+            (click)="filterTransactions('pending')">
+            Pending
+          </button>
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedFilter === 'failed'"
+            (click)="filterTransactions('failed')">
+            Failed
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Filter by Category</h3>
+        <select 
+          class="filter-select" 
+          [value]="selectedCategory"
+          (change)="onCategoryChange($event)">
+          <option value="all">All Categories</option>
+          <option *ngFor="let category of getUniqueCategories()" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Transactions List -->
+    <div class="transactions-list">
+      <div class="transactions-header">
+        <div class="header-col">Description</div>
+        <div class="header-col">Category</div>
+        <div class="header-col">Date</div>
+        <div class="header-col">Amount</div>
+        <div class="header-col">Status</div>
+      </div>
+
+      <div class="transactions-content">
+        <div *ngIf="transactions$ | async as transactions">
+          <div *ngIf="transactions.length === 0" class="no-transactions">
+            <p>No transactions found matching your criteria.</p>
+          </div>
+          
+          <div *ngFor="let transaction of transactions" class="transaction-row">
+            <div class="transaction-col description">
+              <div class="transaction-description">
+                {{ transaction.description }}
+              </div>
+              <div class="transaction-counterparty" *ngIf="transaction.counterparty">
+                {{ transaction.counterparty }}
+              </div>
+            </div>
+            
+            <div class="transaction-col category">
+              <span class="category-badge">{{ transaction.category }}</span>
+            </div>
+            
+            <div class="transaction-col date">
+              {{ formatDate(transaction.date) }}
+            </div>
+            
+            <div class="transaction-col amount">
+              <span class="amount" [class.negative]="transaction.amount < 0">
+                {{ formatCurrency(transaction.amount) }}
+              </span>
+            </div>
+            
+            <div class="transaction-col status">
+              <span class="status-badge" [class]="getStatusClass(transaction.status)">
+                {{ transaction.status | titlecase }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

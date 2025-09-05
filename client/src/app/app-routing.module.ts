@@ -14,6 +14,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
+    path: ROUTES.TRANSACTIONS.substring(1), // Remove leading slash for route definition
+    loadComponent: () => import('./features/transactions/transactions.component').then(m => m.TransactionsComponent),
+    canActivate: [AuthGuard]
+  },
+  { 
     path: ROUTES.PRICING.substring(1), // Remove leading slash for route definition
     loadComponent: () => import('./features/public/pricing/pricing.component').then(m => m.PricingComponent)
   },
