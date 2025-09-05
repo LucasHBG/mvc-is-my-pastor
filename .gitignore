@@ -69,6 +69,9 @@ client/src/environments/.env*
 .env.staging
 .env.production
 
+# Database volumes and data
+mysql_data/
+
 # Google Service Account files
 client/src/assets/google-service-account.json
 client/src/assets/firebase-adminsdk*.json

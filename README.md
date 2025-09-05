@@ -11,21 +11,47 @@ mvc-is-my-pastor/
 │   ├── package.json       # Frontend dependencies
 │   ├── angular.json       # Angular configuration
 │   └── README.md          # Frontend documentation
+├── database/              # MySQL database configuration
+│   ├── init/              # Database initialization scripts
+│   └── README.md          # Database documentation
 ├── server/                # Future: Backend server (Node.js/NestJS)
 ├── .github/               # GitHub workflows and documentation
+├── docker-compose.yml     # Database services
+├── .env.template          # Environment variables template
+├── setup-database.sh      # Database setup script
 ├── .gitignore             # Git ignore rules
 └── README.md              # This file
 ```
 
 ## Quick Start
 
-### Frontend (Angular)
+### Full Stack Setup
+
+```bash
+# 1. Set up database
+./setup-database.sh
+
+# 2. Set up frontend
+cd client
+make install    # Install dependencies
+make setup-env  # Set up environment files
+make dev        # Start development server
+```
+
+### Frontend Only
 
 ```bash
 cd client
 make install    # Install dependencies
 make setup-env  # Set up environment files
 make dev        # Start development server
+```
+
+### Database Only
+
+```bash
+./setup-database.sh
+# Access phpMyAdmin at http://localhost:8080
 ```
 
 ### Development Workflow
@@ -37,14 +63,15 @@ make dev        # Start development server
 ## Technologies
 
 - **Frontend**: Angular 17, SCSS, TypeScript
+- **Database**: MySQL 8.0 with Docker
 - **Backend**: Future - NestJS
 - **Authentication**: Google OAuth integration
-- **Design**: Qonto-inspired dark theme
+- **Design**: Banking inspired dark theme
 
-## Getting Started
+## Services
 
-1. Clone the repository
-2. Navigate to the `client/` directory for frontend development
-3. Follow the setup instructions in `client/README.md`
+- **Frontend**: http://localhost:4200 (Angular dev server)
+- **Database**: localhost:3306 (MySQL)
+- **phpMyAdmin**: http://localhost:8080 (Database web interface)
 
 For detailed setup and development instructions, see the README in each respective directory.
