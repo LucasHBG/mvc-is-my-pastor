@@ -1,0 +1,53 @@
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a [routerLink]="(isAuthenticated$ | async) ? '/dashboard' : '/'" class="logo">
+                    Qonto
+                </a>
+            </div>
+
+            <div class="navbar-menu" [class.is-active]="isMenuOpen">
+                <!-- Unauthenticated Navigation -->
+                <ng-container *ngIf="!(isAuthenticated$ | async)">
+                    <nav class="navbar-nav">
+                        <!-- <a href="#" class="nav-link">Solutions</a> -->
+                        <a routerLink="/pricing" class="nav-link">Pricing</a>
+                    </nav>
+
+                    <div class="navbar-actions">
+                        <a href="#" class="sign-in-link">Sign in</a>
+                        <a routerLink="/signup" class="btn btn-primary">Open an account</a>
+                    </div>
+                </ng-container>
+
+                <!-- Authenticated Navigation -->
+                <ng-container *ngIf="isAuthenticated$ | async">
+                    <nav class="navbar-nav">
+                        <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">Dashboard</a>
+                        <a href="#" class="nav-link">Accounts</a>
+                        <a href="#" class="nav-link">Transactions</a>
+                        <a href="#" class="nav-link">Cards</a>
+                        <a href="#" class="nav-link">Reports</a>
+                    </nav>
+
+                    <div class="navbar-actions">
+                        <div class="user-menu">
+                            <div class="user-info" *ngIf="currentUser$ | async as user">
+                                <span class="user-name">{{ user.name }}</span>
+                                <span class="user-email">{{ user.email }}</span>
+                            </div>
+                            <button class="btn btn-outline" (click)="logout()">Logout</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <button class="navbar-burger" [class.is-active]="isMenuOpen" (click)="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </div>
+</header>

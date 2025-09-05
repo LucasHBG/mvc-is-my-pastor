@@ -1,0 +1,319 @@
+// SCSS Variables
+$pricing-card-radius: 16px;
+$pricing-card-padding: 2rem;
+$toggle-transition: all 0.3s ease;
+$card-hover-transform: translateY(-8px);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: $card-hover-transform;
+    box-shadow: var(--shadow-xl);
+    border-color: var(--border-focus);
+  }
+}
+
+@mixin gradient-bg {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+// Pricing Section Styling
+.pricing-section {
+  padding: 6rem 0;
+  background-color: var(--background);
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: var(--font-size-lg);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Billing Toggle Styling
+.billing-toggle {
+  @include flex-center;
+  margin-bottom: 3rem;
+
+  .toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--background-gray);
+    padding: 0.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+
+    @media (max-width: 600px) {
+      gap: 0.75rem;
+      padding: 0.4rem;
+    }
+  }
+
+  .toggle-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-xs);
+      padding: 0.4rem 0.75rem;
+    }
+
+    &.active {
+      color: var(--text-primary);
+    }
+  }
+
+  .discount-badge {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-left: 0.5rem;
+
+    @media (max-width: 600px) {
+      padding: 0.2rem 0.4rem;
+      font-size: 0.65rem;
+    }
+  }
+}
+
+// Toggle Switch Styling
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  display: inline-block;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  transition: $toggle-transition;
+  border-radius: 20px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--text-secondary);
+    transition: $toggle-transition;
+    border-radius: 50%;
+  }
+}
+
+.toggle-input:checked + .toggle-slider {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+
+  &:before {
+    transform: translateX(24px);
+    background-color: black;
+  }
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.pricing-card {
+  background-color: var(--background-gray);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--border-focus);
+}
+
+.pricing-card.popular {
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-card.popular .card-header {
+  border-top: 3px solid var(--accent-blue);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.card-header {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plan-name {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.price .currency {
+  font-size: var(--font-size-2xl);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.price .amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.price .period {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
+
+.price-note {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.plan-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.btn-full {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.billing-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: 2rem;
+}
+
+.features-section h4 {
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: var(--font-size-sm);
+}
+
+.features-list li:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.features-list li.feature-included {
+  color: var(--text-primary);
+}
+
+.features-list li.feature-included:before {
+  background-color: var(--success-color);
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-8 8a.5.5 0 0 1-.708 0l-4-4a.5.5 0 1 1 .708-.708L5 10.293l7.646-7.647a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.features-list li.feature-excluded {
+  color: var(--text-muted);
+}
+
+.features-list li.feature-excluded:before {
+  background-color: var(--border-color);
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}

@@ -14,6 +14,15 @@ _Live Example: https://angular-template.vercel.app_
 
 ## Development server
 
+### Using Makefile (Recommended)
+```bash
+make dev          # Start development server
+make build        # Build for production
+make test         # Run tests
+make help         # See all available commands
+```
+
+### Traditional Angular CLI
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
@@ -22,6 +31,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
+### Using Makefile (Recommended)
+```bash
+make build        # Build for production
+make build-dev    # Build for development
+```
+
+### Traditional Angular CLI
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests

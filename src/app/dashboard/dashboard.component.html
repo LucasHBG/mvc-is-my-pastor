@@ -1,0 +1,119 @@
+<!-- Dashboard Section -->
+<section class="dashboard">
+  <div class="container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="welcome-section">
+        <h1>Welcome back, {{ (currentUser$ | async)?.name || 'User' }}</h1>
+        <p class="company-info">{{ (currentUser$ | async)?.company || 'Your Company' }}</p>
+      </div>
+      <div class="user-actions">
+        <button class="btn btn-outline">Settings</button>
+        <button class="btn btn-primary">New Transaction</button>
+      </div>
+    </div>
+
+    <!-- Account Overview -->
+    <div class="accounts-section">
+      <h2>Your Accounts</h2>
+      <div class="accounts-grid">
+        <div class="account-card" *ngFor="let account of accounts">
+          <div class="account-header">
+            <h3>{{ account.name }}</h3>
+            <span class="account-iban">{{ account.iban }}</span>
+          </div>
+          <div class="account-balance">
+            <span class="balance-amount">{{ formatCurrency(account.balance) }}</span>
+          </div>
+          <div class="account-actions">
+            <button class="btn btn-small btn-outline">View Details</button>
+            <button class="btn btn-small btn-primary">Transfer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="dashboard-grid">
+      <!-- Quick Actions -->
+      <div class="dashboard-card quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="actions-grid">
+          <button class="action-item" *ngFor="let action of quickActions">
+            <span class="action-icon">{{ action.icon }}</span>
+            <span class="action-title">{{ action.title }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="dashboard-card transactions">
+        <div class="card-header">
+          <h3>Recent Transactions</h3>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="transactions-list">
+          <div class="transaction-item" *ngFor="let transaction of recentTransactions">
+            <div class="transaction-info">
+              <div class="transaction-description">{{ transaction.description }}</div>
+              <div class="transaction-date">{{ transaction.date | date:'MMM d, y' }}</div>
+            </div>
+            <div class="transaction-amount" [class]="transaction.amount > 0 ? 'positive' : 'negative'">
+              {{ formatCurrency(transaction.amount) }}
+            </div>
+            <div class="transaction-status" [class]="getStatusClass(transaction.status)">
+              {{ transaction.status | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Overview -->
+      <div class="dashboard-card analytics">
+        <h3>This Month</h3>
+        <div class="analytics-grid">
+          <div class="analytics-item">
+            <div class="analytics-label">Total Income</div>
+            <div class="analytics-value positive">{{ formatCurrency(15750) }}</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">Total Expenses</div>
+            <div class="analytics-value negative">{{ formatCurrency(-8920) }}</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">Net Profit</div>
+            <div class="analytics-value positive">{{ formatCurrency(6830) }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="dashboard-card notifications">
+        <h3>Notifications</h3>
+        <div class="notifications-list">
+          <div class="notification-item">
+            <div class="notification-icon">🔔</div>
+            <div class="notification-content">
+              <div class="notification-title">Payment Received</div>
+              <div class="notification-text">€2,500 from Client XYZ</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-icon">⚠️</div>
+            <div class="notification-content">
+              <div class="notification-title">Low Balance Alert</div>
+              <div class="notification-text">Savings account below €5,000</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-icon">📄</div>
+            <div class="notification-content">
+              <div class="notification-title">New Statement</div>
+              <div class="notification-text">August statement is ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

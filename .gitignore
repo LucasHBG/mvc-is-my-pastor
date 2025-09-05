@@ -42,3 +42,32 @@ testem.log
 Thumbs.db
 .vercel
 .angular
+
+# Environment files with sensitive data
+# Keep template files but ignore any with actual credentials
+src/environments/environment.local.ts
+src/environments/environment.staging.ts
+src/environments/environment.development.ts
+src/environments/environment.*.local.ts
+
+# ALL environment files (more secure approach)
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+# Backup environment files (in case someone creates backups)
+src/environments/*.backup.ts
+src/environments/*.bak.ts
+
+# Environment files with actual secrets (common naming patterns)
+src/environments/environment.secrets.ts
+src/environments/.env*
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# Google Service Account files
+src/assets/google-service-account.json
+src/assets/firebase-adminsdk*.json
+src/assets/*-service-account-*.json
